@@ -1,7 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from '../screens/FontEnd/HomeScreen'
-import SearchScreen from '../screens/FontEnd/SearchScreen'
 import MyAccountScreen from '../screens/FontEnd/MyAccountScreen'
 import { colors } from '../golbal/Styles'
 import MyOrdersScreen from '../screens/FontEnd/MyOrdersScreen'
