@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { View, Text, Linking, Pressable, Alert, Switch, StyleSheet, TouchableOpacity } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList, Drawer, DrawerItem } from '@react-navigation/drawer'
 import { Avatar, Button } from 'react-native-paper'
-import Pro from '../assets/images/Profile/Hasnat.jpeg'
+import Pro from '../assets/images/Profile/waqar.jpg'
 import { colors } from "../golbal/Styles"
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -47,13 +47,13 @@ export default function DrawerContent(props) {
                                     color: "white",
                                     fontSize: 18
                                 }}
-                            >Hasnat Majid</Text>
+                            >Muhammad Waqar</Text>
                             <Text
                                 style={{
                                     color: "white",
                                     fontSize: 14
                                 }}
-                            >hasnatmajid47@gmail.com</Text>
+                            >ranawaqar3325@gmail.com</Text>
                         </View>
                     </View>
                     <View style={{

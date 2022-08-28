@@ -25,7 +25,7 @@ export default function HomeHeader({navigation}) {
                 />
             </View>
             <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>LAA JAWAB</Text>
+                <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>Punjab Real Estate</Text>
             </View>
             <View style={{
                 alignItems: "center",

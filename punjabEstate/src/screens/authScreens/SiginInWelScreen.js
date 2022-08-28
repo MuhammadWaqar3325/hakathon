@@ -2,10 +2,10 @@ import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { colors, parameters, title } from '../../golbal/Styles'
 import Swiper from 'react-native-swiper'
-import swiper1 from "../../assets/images/Swiper/Sigin1.jpg"
-import swiper2 from "../../assets/images/Swiper/Sigin2.jpg"
-import swiper3 from "../../assets/images/Swiper/Sigin3.jpg"
-import swiper4 from "../../assets/images/Swiper/sigin4.jpg"
+import swiper1 from "../../assets/images/Swiper/Slide1.jpg"
+import swiper2 from "../../assets/images/Swiper/Slide2.jpg"
+import swiper3 from "../../assets/images/Swiper/Slide3.jpg"
+import swiper4 from "../../assets/images/Swiper/Slide4.jpg"
 import { Button } from 'react-native-paper'
 
 export default function SiginInWelScreen({ navigation }) {
