@@ -1,7 +1,7 @@
 export const colors = {
     buttons: "#ff8c52",
     gery1: "#43484d",
-    gery2: "#5e6977",
+    gery2: "#43484d",
     gery3: "#86939e",
     gery4: "#bdc6cf",
     gery5: "#e1e8ee",

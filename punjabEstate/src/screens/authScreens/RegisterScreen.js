@@ -1,4 +1,4 @@
-import React, { useState, useRef,useContext } from 'react'
+import React, { useState, useRef } from 'react'
 import { View, Text, StyleSheet, TextInput, Image, ScrollView } from 'react-native'
 import { colors, parameters, title } from '../../golbal/Styles'
 import * as Animatable from "react-native-animatable"
@@ -7,39 +7,32 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Button } from 'react-native-paper'
 import { Formik } from 'formik'
 import auth from '@react-native-firebase/auth'
-import { SignInContext } from '../../context/authContext'
 
 const initialValuse = { phone_number: '', first_name: "", last_name: "", password: "", email: "", username: '' }
 
 export default function RegisterScreen({ navigation }) {
 
-  const { dispatchSignIn } = useContext(SignInContext)
+async function signUp (values){
 
-  async function signUp(values) {
+  const {email,password}=values
 
-    const { email, password, last_name, first_name, phone_number } = values
-
-    try {
-      const user = await auth().createUserWithEmailAndPassword(email, password, last_name, phone_number, first_name)
-      console.log("USER IS CREATED")
-      if (user) {
-        dispatchSignIn({ type: "UPDATE_SIGIN_IN", payload: { userToken: "sign-Up" } })
-        console.log(user)
-      }
-    }
-    catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("That email is already is Sign-up")
-      }
-
-      if (error.code === "auth/invalid-email") {
-        alert("That email is already is Sign-up")
-      }
-      else {
-        alert(error.code)
-      }
+  try{
+    await auth().createUserWithEmailAndPassword(email,password)
+    console.log("USER IS CREATED")
+  }
+  catch(error){
+    if(error.code === "auth/email-already-in-use"){
+      alert("That email is already is Sign-up")
+    } 
+    
+    if(error.code === "auth/invalid-email"){
+      alert("That email is already is Sign-up")
+    }   
+    else{
+      alert(error.code)
     }
   }
+}
 
   return (
     <View style={styles.container}>

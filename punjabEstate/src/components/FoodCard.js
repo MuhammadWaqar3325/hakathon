@@ -6,9 +6,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 // const SCREEN_WIDTH = Dimensions.get('window').width
 
-export default function HouseCard({
+export default function FoodCard({
     OnPessFoodCard,
-    AreaName,
+    restaurantName,
     deliveryAvailable,
     disccountPercent,
     numberOfReview,
@@ -29,7 +29,7 @@ export default function HouseCard({
 
                 <View>
                     <View>
-                        <Text style={styles.AreaName}>{AreaName}</Text>
+                        <Text style={styles.restaurantName}>{restaurantName}</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: "row" }}>
                         <View style={styles.distance}>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 5,
         height: 160,
     },
-    AreaName: {
+    restaurantName: {
         fontSize: 17,
         fontWeight: "bold",
         color: colors.gery1,

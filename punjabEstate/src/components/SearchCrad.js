@@ -4,7 +4,7 @@ import { colors } from '../golbal/Styles'
 
 export default function SearchCrad(
     OnPessFoodCard,
-    AreaName,
+    restaurantName,
     deliveryAvailable,
     disccountPercent,
     numberOfReview,

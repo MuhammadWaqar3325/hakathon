@@ -154,7 +154,7 @@ export default function SiginInScreen({ navigation }) {
             </View>
 
             <View style={{ marginTop: 40, marginLeft: 25 }}>
-                <Text style={{ ...styles.text1 }}>New on Punajab Real Estate?</Text>
+                <Text style={{ ...styles.text1 }}>New on Laa Jawab?</Text>
             </View>
             <View style={{ alignItems: "flex-end", display: "flex" }}>
                 <Button mode="outlined" textColor='#ff8c52' onPress={() => navigation.navigate("RegisterScreen")}
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white"
     },
     text1: {
-        color: colors.gery1,
+        color: colors.gery3,
         fontSize: 16,
     },
     textinput1: {

@@ -1,9 +1,10 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from '../screens/FontEnd/HomeScreen'
+import SearchScreen from '../screens/FontEnd/SearchScreen'
 import MyAccountScreen from '../screens/FontEnd/MyAccountScreen'
 import { colors } from '../golbal/Styles'
-import MyOrdersScreen from '../screens/FontEnd/MyOrdersScreen'
+import AddPost from '../screens/FontEnd/AddPost'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import ClientStack from './ClientStack'
 
@@ -36,9 +37,9 @@ export default function RootClientTab() {
             <FontAwesome5 name="search" color={color} size={size} />
           ),
         }} />
-      <ClientTab.Screen name='MyOrdersScreen' component={MyOrdersScreen}
+      <ClientTab.Screen name='AddPost' component={AddPost}
         options={{
-          tabBarLabel: 'My Orders',
+          tabBarLabel: 'Add Post',
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="th-list" color={color} size={size} />
             ),

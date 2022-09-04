@@ -1,57 +1,84 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeScreen from '../screens/FontEnd/HomeScreen'
-import SearchScreen from '../screens/FontEnd/SearchScreen'
-import MyAccountScreen from '../screens/FontEnd/MyAccountScreen'
-import { colors } from '../golbal/Styles'
-import MyOrdersScreen from '../screens/FontEnd/MyOrdersScreen'
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import ClientStack from './ClientStack'
+import {
+    View, Text, FlatList,
+    TouchableWithoutFeedback,
+    TouchableOpacity,
+    ImageBackground,
+    StyleSheet,
+    Dimensions
+} from 'react-native'
+import SearchBar from '../../components/SearchBar'
+import { filterData } from '../../golbal/Data'
+import { colors } from '../../golbal/Styles'
 
+const SCREEN_WIDTH = Dimensions.get('window').width
 
-const ClientTab = createBottomTabNavigator()
-
-
-export default function RootClientTab() {
-  return (
-    <ClientTab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: colors.buttons
-      }}
-    >
-
-      <ClientTab.Screen name='HomeScreen' component={HomeScreen}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="home" color={color} size={size} />
-          ),
-        }}
-
-      />
-      <ClientTab.Screen name='ClientStack' component={ClientStack}
-        options={{
-          tabBarLabel: 'Search',
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="search" color={color} size={size} />
-          ),
-        }} />
-      <ClientTab.Screen name='MyOrdersScreen' component={MyOrdersScreen}
-        options={{
-          tabBarLabel: 'My Orders',
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="th-list" color={color} size={size} />
-            ),
-          }} />
-          <ClientTab.Screen name='MyAccountScreen' component={MyAccountScreen}
-            options={{
-              tabBarLabel: 'Account',
-              tabBarIcon: ({ color, size }) => (
-                <FontAwesome5 name="user-circle" color={color} size={size} />
-              ),
-            }} />
-
-    </ClientTab.Navigator>
-  )
+export default function SearchScreen({navigation}) {
+    return (
+        <View style={{paddingHorizontal:10}}>
+            <SearchBar navigation={navigation} />
+            <View style={{marginBottom:120}}>
+                <FlatList
+                    ListHeaderComponent={<Text style={styles.listheader}>categoies</Text>}
+                    showsHorizontalScrollIndicator={false}
+                    numcolums={2}
+                    style={{ marginBottom: 1 }}
+                    data={filterData}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableWithoutFeedback
+                        onPress={()=>navigation.navigate("ResultSearch",{ item: item.name })}
+                        >
+                            <View style={styles.imageview}>
+                                <ImageBackground style={styles.image}
+                                    source={item.image}
+                                >
+                                    <View style={styles.textview}>
+                                        <Text style={{color:"white"}}>{item.name}</Text>
+                                    </View>
+                                </ImageBackground>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    )}
+                />
+            </View>
+        </View>
+    )
 }
+
+
+const styles = StyleSheet.create({
+    image: {
+        height: SCREEN_WIDTH * 0.9,
+        width: SCREEN_WIDTH * 0.9,
+        borderRadius: 10,
+    },
+    imageview: {
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        height: SCREEN_WIDTH * 0.9,
+        width: SCREEN_WIDTH * 0.9,
+        marginLeft: SCREEN_WIDTH * 0.035,
+        marginBottom: SCREEN_WIDTH * 0.035,
+    },
+    listheader: {
+        fontSize: 18,
+        color: colors.gery2,
+        paddingBottom: 10,
+        marginLeft: 12,
+        marginTop:5,
+fontWeight:"bold",
+marginBottom:5
+        
+    },
+    textview: {
+        height: SCREEN_WIDTH * 0.9,
+        width: SCREEN_WIDTH * 0.9,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(52,52,52,0.5)",
+       
+    }
+
+})

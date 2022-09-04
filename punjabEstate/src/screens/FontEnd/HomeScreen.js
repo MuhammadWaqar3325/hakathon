@@ -3,10 +3,12 @@ import {
   View, Text, StyleSheet, TouchableOpacity,
   ScrollView, FlatList, Pressable, Image, Dimensions
 } from 'react-native'
+import CountDown from 'react-native-countdown-component'
 import { colors, parameters } from '../../golbal/Styles'
 import HomeHeader from '../../components/HomeHeader'
-import { HouseData, AreaData } from "../../golbal/Data"
-import AreaCard from '../../components/HouseCard'
+import Entypo from 'react-native-vector-icons/Entypo'
+import { filterData, restaurantsData } from "../../golbal/Data"
+import FoodCard from '../../components/FoodCard'
 
 // Import Part is End
 
@@ -19,6 +21,7 @@ export default function HomeScreen({navigation}) {
 
   // Hook is use Start
 
+  const [delivery, setDelivery] = useState(true)
   const [indexcheck, setIndexCheck] = useState("0")
   //
 
@@ -33,10 +36,10 @@ export default function HomeScreen({navigation}) {
       {/* Main Screen Is Start */}
 
       <ScrollView
+        stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={true}
       >
-   
-
+       
         {/* Location And Time */}
 
       
@@ -54,7 +57,7 @@ export default function HomeScreen({navigation}) {
           <FlatList
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={HouseData}
+            data={filterData}
             keyExtractor={(item) => item.id}
             extraData={indexcheck}
             renderItem={({ item, index }) => (
@@ -75,36 +78,52 @@ export default function HomeScreen({navigation}) {
             )}
           />
         </View>
-       
+        {/* Small Button end */}
+
+        {/* Large  Button */}
 
         <View style={{
           backgroundColor: colors.gery5,
           paddingVertical: 2
         }}>
           <Text style={{
-            color: colors.gery1,
+            color: colors.gery2,
             fontSize: 25,
             paddingLeft: 10,
-          }}>Suggestion Place</Text>
+          }}>Suggjestion For You</Text>
         </View>
         <View>
           <View style={{ flexDirection: "row", alignItems: 'center', marginTop: 5 }}>
-            
-          
+            <Text style={{
+              marginLeft: 15,
+              marginTop: -10,
+              fontSize: 16,
+              marginRight: 5,
+              color: colors.gery2
+
+            }}>Options Chaning in :</Text>
+            <CountDown
+              until={3600}
+              size={14}
+              digitStyle={{ backgroundColor: "#66DF48" }}
+              digitTxtStyle={{ color: colors.gery1 }}
+              timeToShow={['M', 'S']}
+              timeLabels={{ m: 'Min', s: 'Sec' }}
+            />
 
           </View>
           <FlatList
             showsHorizontalScrollIndicator={false}
             style={{ marginTop: 10, marginBottom: 10, }}
             horizontal={true}
-            data={AreaData}
+            data={restaurantsData}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
               <View>
-                <AreaCard
+                <FoodCard
                   screenWidth={SCREEN_WIDTH * 0.8}
                   image={item.image}
-                  Prices={item.Prices}
+                  restaurantName={item.restaurantName}
                   farAway={item.forAway}
                   averageReview={item.averageReview}
                   numberOfReview={item.numberOfReview}
@@ -130,14 +149,14 @@ export default function HomeScreen({navigation}) {
             showsHorizontalScrollIndicator={false}
             style={{ marginTop: 10, marginBottom: 10, }}
             horizontal={true}
-            data={AreaData}
+            data={restaurantsData}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => (
               <View>
-                <AreaCard
+                <FoodCard
                   screenWidth={SCREEN_WIDTH * 0.8}
                   image={item.image}
-                  Prices={item.Prices}
+                  restaurantName={item.restaurantName}
                   farAway={item.forAway}
                   averageReview={item.averageReview}
                   numberOfReview={item.numberOfReview}
@@ -153,19 +172,19 @@ export default function HomeScreen({navigation}) {
           paddingVertical: 2
         }}>
           <Text style={{
-            color: colors.gery1,
+            color: colors.gery2,
             fontSize: 25,
             paddingLeft: 10,
-          }}>Beast Place In Your Area </Text>
+          }}>Houses In Your Area </Text>
         </View>
         <View style={{ width: SCREEN_WIDTH, paddingTop: 10 }}>
           {
-            AreaData.map(item => (
+            restaurantsData.map(item => (
               <View key={item.id} style={{ paddingBottom: 20 }}>
-                <AreaCard
+                <FoodCard
                   screenWidth={SCREEN_WIDTH * 0.95}
                   image={item.image}
-                  Prices={item.Prices}
+                  restaurantName={item.restaurantName}
                   farAway={item.forAway}
                   averageReview={item.averageReview}
                   numberOfReview={item.numberOfReview}
@@ -178,6 +197,22 @@ export default function HomeScreen({navigation}) {
         {/* Large  Button End */}
       </ScrollView>
 
+      {
+        delivery &&
+        <View style={styles.map}>
+        <TouchableOpacity
+        onPress={()=>{navigation.navigate("MapScreen")}}
+        >
+          <Entypo
+          name='location-pin'
+          size={28}
+          color={colors.buttons}
+          style={{marginTop:5}}
+          />
+          <Text>Map</Text>
+        </TouchableOpacity>
+      </View>
+      }
 
     </View>
   )

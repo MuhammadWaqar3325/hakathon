@@ -16,7 +16,7 @@ export default function SiginInWelScreen({ navigation }) {
                 alignItems: "center",
                 marginTop: 10, paddingTop: 20
             }}>
-                <Text style={{ fontSize: 26, color: colors.buttons, fontWeight: "bold" }}>DISCOVER RESTAURANT</Text>
+                <Text style={{ fontSize: 26, color: colors.buttons, fontWeight: "bold" }}>DISCOVER HOUSES</Text>
                 <Text style={{ fontSize: 26, color: colors.buttons, fontWeight: "bold" }}>IN YOUR AREA</Text>
             </View>
             <View style={{ flex: 8, justifyContent: "center" }}>
