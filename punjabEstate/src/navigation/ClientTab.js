@@ -29,9 +29,6 @@ export default function RootClientTab() {
           ),
         }}
 
-
-
-        
       />
       <ClientTab.Screen name='ClientStack' component={ClientStack}
         options={{
